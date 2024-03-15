@@ -24,6 +24,6 @@ class PagesController extends AbstractController
             'controller_name' => 'CGUController',
             'title' => 'cgu',
         ]);
-    }
+    } 
     
 }
