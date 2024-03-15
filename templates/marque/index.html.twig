@@ -18,7 +18,7 @@
                 <td scope="row">{{marque.id}}</td>
                 <td>{{marque.libelle}}</td>
                 <td >
-                    <a href="{{path('marque_show')}}" class="btn btn-primary">Détails</a>
+                    <a href="{{path('marque_show',{'id': marque.id})}}" class="btn btn-primary">Détails</a>
                     <a href="{{path('marque_edit',{'id': marque.id} )}}" class="btn btn-primary">Modifier</a>
                     <a href="{{path('marque_delete',{'id': marque.id} )}}" class="btn btn-primary">Supprimer</a></td>
             </tr>

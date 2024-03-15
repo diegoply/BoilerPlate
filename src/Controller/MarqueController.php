@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\MarqueRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -13,12 +14,10 @@ class MarqueController extends AbstractController
 
 
     #[Route('/marque', name: 'marque_index', methods: ['GET'])]
-    public function index(): Response
-    {
-        
+    public function index(MarqueRepository $repo): Response
+    {     
         return $this->render('marque/index.html.twig', [
-            'controller_name' => 'MarqueController',
-            'marques'=>
+            'marques' => $repo->findAll(),
         ]);
     }
 
