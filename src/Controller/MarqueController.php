@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Marque;
 use App\Repository\MarqueRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -22,9 +24,12 @@ class MarqueController extends AbstractController
     }
 
     #[Route('/marque/{id}', name: 'marque_show', requirements: ['id'=>'\d+'], methods: ['GET'])]
-    public function show(): Response
+    public function show( Marque $marque): Response
     {
-        dd(__METHOD__ );
+
+        return $this->render('marque/show.html.twig', [
+            'marque' => $marque,
+        ]);
     }
 
     #[Route('/marque/create', name: 'marque_create', priority: 0, methods: ['GET', 'POST'])]

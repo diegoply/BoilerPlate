@@ -18,7 +18,7 @@ class Marque
     #[ORM\Column(length: 32)]
     private ?string $libelle = null;
 
-    #[ORM\OneToMany(targetEntity: modele::class, mappedBy: 'marque')]
+    #[ORM\OneToMany(targetEntity: Modele::class, mappedBy: 'marque')]
     private Collection $modeles;
 
     public function __construct()
@@ -51,7 +51,7 @@ class Marque
         return $this->modeles;
     }
 
-    public function addModele(modele $modele): static
+    public function addModele(Modele $modele): static
     {
         if (!$this->modeles->contains($modele)) {
             $this->modeles->add($modele);
@@ -61,7 +61,7 @@ class Marque
         return $this;
     }
 
-    public function removeModele(modele $modele): static
+    public function removeModele(Modele $modele): static
     {
         if ($this->modeles->removeElement($modele)) {
             // set the owning side to null (unless already changed)
