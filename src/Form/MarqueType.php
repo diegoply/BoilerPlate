@@ -22,7 +22,7 @@ class MarqueType extends AbstractType
                         'message' => 'Veuillez saisir une marque',
                     ]),
                 ],
-               'required' => false,
+               'required' => true,
             ])
             // ->add('submit', SubmitType::class)
         ;
