@@ -6,6 +6,7 @@ use App\Repository\MarqueRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MarqueRepository::class)]
 class Marque
@@ -16,6 +17,15 @@ class Marque
     private ?int $id = null;
 
     #[ORM\Column(length: 32)]
+    #[Assert\Length(
+        min: 3,
+        minMessage: 'La marque doit contenir au moins {{ limit }} caractères',
+        max: 32,
+        maxMessage: 'La marque ne peut pas dépasser {{ limit }} caractères'
+    )]
+    #[Assert\Regex(
+       pattern: '/^[a-zA-Z -]+$/',
+       message: 'La marque ne peut contenir que des lettres')]
     private ?string $libelle = null;
 
     #[ORM\OneToMany(targetEntity: Modele::class, mappedBy: 'marque')]
@@ -42,6 +52,7 @@ class Marque
 
         return $this;
     }
+
 
     /**
      * @return Collection<int, modele>

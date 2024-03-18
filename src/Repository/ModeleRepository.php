@@ -21,6 +21,33 @@ class ModeleRepository extends ServiceEntityRepository
         parent::__construct($registry, Modele::class);
     }
 
+    public function save(Modele $entity, bool $flush = false): void{
+       $entityManager = $this->getEntityManager();
+       $entityManager->persist($entity);
+
+        if ($flush) {
+            $entityManager->flush();
+        }
+    }
+
+    
+    /**public function update(Marque $entity, bool $flush = false): void
+    {
+        // No need to persist, Doctrine tracks changes to managed entities.
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+    **/
+    public function remove(Modele $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
     //    /**
     //     * @return Modele[] Returns an array of Modele objects
     //     */
