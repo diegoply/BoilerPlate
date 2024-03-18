@@ -12,7 +12,7 @@ class PagesController extends AbstractController
     public function contact(): Response
     {
         return $this->render('pages/index.html.twig', [
-            'controller_name' => 'PagesController',
+            'controller_name' => 'ContactController',
             'title' => 'Contact',
         ]);
     }
@@ -21,8 +21,9 @@ class PagesController extends AbstractController
     public function cgu(): Response
     {
         return $this->render('pages/index.html.twig', [
-            'controller_name' => 'PagesController',
+            'controller_name' => 'CGUController',
             'title' => 'cgu',
         ]);
-    }
+    } 
+    
 }
